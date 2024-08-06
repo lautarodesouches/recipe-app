@@ -1,32 +1,34 @@
 import { COLORS } from '@/constants/colors'
 import { Link, Redirect, useLocalSearchParams } from 'expo-router'
 import { View, Text, StyleSheet, Image, Pressable, ScrollView } from 'react-native'
-import data from '@/assets/data/recipes.json'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
+import { getCategoryById, getRecipeById } from '@/data/api'
 
 export default function DetailsScreen() {
     const { id } = useLocalSearchParams()
 
-    const recipe = data.find(recipe => recipe.id.toString() === id)
+    const recipe = getRecipeById(parseInt(typeof id == 'string' ? id : id[0]))
 
     if (!recipe) return <Redirect href={'/recipes/not-found'} />
 
+    const category = getCategoryById(recipe.categoryId)
+
     return (
         <ScrollView style={styles.container}>
-            <Image style={styles.image} src={recipe.image} />
+            <Image style={styles.image} src={recipe.photo_url} />
             <View style={styles.content}>
                 <Text style={styles.title}>{recipe.title}</Text>
-                <Link style={styles.link} href={{ pathname: '/categories/[name]', params: { name: recipe.dishTypes[0] } }}>
-                    <Text style={styles.subtitle}>{recipe.dishTypes[0]}</Text>
+                <Link style={styles.link} href={{ pathname: '/categories/[name]', params: { name: category.name } }}>
+                    <Text style={styles.subtitle}>{category.name}</Text>
                 </Link>
                 <View style={styles.time}>
                     <FontAwesome6 name='clock' size={16} color='black' />
-                    <Text style={styles.timeText}>{recipe.readyInMinutes} minutes</Text>
+                    <Text style={styles.timeText}>{recipe.time} minutes</Text>
                 </View>
                 <Pressable style={styles.ingredients}>
                     <Text style={styles.ingredientsText}>View Ingredients</Text>
                 </Pressable>
-                <Text style={styles.description}>{recipe.summary}</Text>
+                <Text style={styles.description}>{recipe.description}</Text>
             </View>
         </ScrollView>
     )

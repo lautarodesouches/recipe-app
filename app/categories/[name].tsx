@@ -1,14 +1,14 @@
 import { COLORS } from '@/constants/colors'
+import { getCategoryById } from '@/data/api'
 import { Redirect, useLocalSearchParams } from 'expo-router'
 import { StyleSheet, ScrollView } from 'react-native'
-import data from '@/assets/data/recipes.json'
 
 export default function DetailsScreen() {
-    const { name } = useLocalSearchParams()
+    const { id } = useLocalSearchParams()
 
-    const recipe = data.find(recipe => recipe.id.toString() === name)
+    const category = getCategoryById(parseInt(typeof id == 'string' ? id : id[0]))
 
-    if (!recipe) return <Redirect href={'/categories/not-found'} />
+    if (!category) return <Redirect href={'/categories/not-found'} />
 
     return <ScrollView style={styles.container}></ScrollView>
 }

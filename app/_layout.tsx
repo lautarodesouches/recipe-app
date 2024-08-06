@@ -44,7 +44,12 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
     return (
-        <Stack>
+        <Stack screenOptions={{
+            headerTitleStyle: {
+              fontWeight: '600',
+            },
+            headerTitleAlign: 'center',
+        }}>
             <Stack.Screen name='index' options={{ title: 'Home' }} />
             <Stack.Screen name='recipes/[id]' options={{ title: 'Recipe', headerShown: false }} />
             <Stack.Screen name='categories/[name]' options={{ title: 'Categories' }} />

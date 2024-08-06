@@ -1,4 +1,5 @@
 import { COLORS } from '@/constants/colors'
+import { getCategoryById } from '@/data/api'
 import { Recipe } from '@/types'
 import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
@@ -11,22 +12,16 @@ export default function Item(recipe: Recipe) {
         })
     }
 
-    const getTitle = () => {
-        let { title } = recipe
-
-        if (title.length < 20) return title
-
-        return `${title.slice(0, title.at(19) === ' ' ? 19 : 20)}...`
-    }
+    const category = getCategoryById(recipe.categoryId)
 
     return (
         <View style={styles.container}>
-            <Pressable style={styles.pressable} onPress={() => handlePress(recipe.id)}>
+            <Pressable style={styles.pressable} onPress={() => handlePress(recipe.recipeId)}>
                 <View>
-                    <Image style={styles.image} src={recipe.image} />
-                    <Text style={styles.title}>{getTitle()}</Text>
+                    <Image style={styles.image} src={recipe.photo_url} />
+                    <Text style={styles.title}>{recipe.title}</Text>
                 </View>
-                <Text style={styles.subtitle}>{recipe.dishTypes[0]}</Text>
+                <Text style={styles.subtitle}>{category.name}</Text>
             </Pressable>
         </View>
     )
