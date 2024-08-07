@@ -71,7 +71,7 @@ const recipes: Recipe[] = [
             '-- Beat the egg and then combine it with water in a bowl. Stir. Combine the flour, salt, MSG, pepper, onion powder and garlic powder in a gallon size zip lock bag. Pound each of the breast filets until about 1/4-inch thick. Then cut into bite sized pieces. Coat each piece with the flour mixture by shaking in the zip lock bag. Remove and coat in the egg mixture. Then coat in the flour mixture again. Shake to coat. Deep fry at 375 degrees for 10-12 minutes, until browned and crispy.'
     },
     {
-        recipeId: 3,
+        recipeId: 37,
         categoryId: 3,
         title: 'Pumpkin Spice Cookies',
         photo_url: 'https://www.texanerin.com/content/uploads/2018/11/pumpkin-spice-cookies-4-650x975.jpg',
@@ -225,9 +225,8 @@ const recipes: Recipe[] = [
         recipeId: 0,
         categoryId: 0,
         title: 'Classic Lasagna',
-        photo_url: 'https://namelymarly.com/wp-content/uploads/2018/04/20180415_Beet_Lasagna_10.jpg',
+        photo_url: 'https://images.pexels.com/photos/2765875/pexels-photo-2765875.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         photosArray: [
-            'https://namelymarly.com/wp-content/uploads/2018/04/20180415_Beet_Lasagna_10.jpg',
             'https://advancelocal-adapter-image-uploads.s3.amazonaws.com/image.al.com/home/bama-media/width600/img/news_impact/photo/burger-fijpg-57e7e5907630c2ad.jpg',
             'https://img.thedailybeast.com/image/upload/c_crop,d_placeholder_euli9k,h_1439,w_2560,x_0,y_0/dpr_1.5/c_limit,w_1044/fl_lossy,q_auto/v1492718105/articles/2013/09/24/burger-king-s-new-french-fries-took-ten-years-to-develop/130923-gross-burger-tease_izz59e',
             'https://aht.seriouseats.com/images/2012/02/20120221-193971-fast-food-fries-Burger-King-fries-2.jpg'
@@ -245,7 +244,7 @@ const recipes: Recipe[] = [
         recipeId: 7,
         categoryId: 2,
         title: 'Spaghetti Carbonara',
-        photo_url: 'https://truffle-assets.imgix.net/655ce202-862-butternutsquashcarbonara-land.jpg',
+        photo_url: 'https://images.pexels.com/photos/4518836/pexels-photo-4518836.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
         photosArray: [
             'https://ak3.picdn.net/shutterstock/videos/10431533/thumb/10.jpg',
             'https://www.kcet.org/sites/kl/files/styles/kl_image_large/public/thumbnails/image/square_hero_desktop_2x_sfs_spaghetti_carbonara_clr-3.jpg?itok=T-rsBDIZ',

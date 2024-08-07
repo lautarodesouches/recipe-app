@@ -16,6 +16,33 @@ export function getIngredientById(ingredientId: number) {
     return ingredient
 }
 
+export function getIngredientesByRecipe(recipeId: number): {
+    id: number
+    name: string
+    photo_url: string
+    amount: string
+}[] {
+    const recipe = getRecipeById(recipeId)
+
+    const ingredients: {
+        id: number
+        name: string
+        photo_url: string
+        amount: string
+    }[] = recipe.ingredients.map(ingredient => {
+        const detail = getIngredientById(ingredient[0])
+
+        return {
+            id: ingredient[0],
+            name: detail.name,
+            photo_url: detail.photo_url,
+            amount: ingredient[1]
+        }
+    })
+
+    return ingredients
+}
+
 // CATEGORIES
 export function getAllCategories() {
     return categories

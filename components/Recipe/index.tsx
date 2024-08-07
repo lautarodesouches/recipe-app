@@ -6,10 +6,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Item(recipe: Recipe) {
     const handlePress = (id: number) => {
-        router.navigate({
-            pathname: '/recipes/[id]',
-            params: { id }
-        })
+        router.navigate(`/recipe/${id}`)
     }
 
     const category = getCategoryById(recipe.categoryId)
@@ -35,7 +32,7 @@ const styles = StyleSheet.create({
     pressable: {
         flex: 1,
         justifyContent: 'space-between',
-        backgroundColor: COLORS.light,
+        backgroundColor: COLORS.white,
         borderRadius: 10,
         shadowColor: '#000',
         shadowOffset: { width: -2, height: 4 },
