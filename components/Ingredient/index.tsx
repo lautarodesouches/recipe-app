@@ -26,7 +26,7 @@ export default function Ingredient({ item }: { item: { id: number; name: string;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1/3,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 20

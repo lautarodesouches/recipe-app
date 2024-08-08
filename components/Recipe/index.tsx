@@ -26,7 +26,7 @@ export default function Item(recipe: Recipe) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1/2,
         margin: 10,
     },
     pressable: {

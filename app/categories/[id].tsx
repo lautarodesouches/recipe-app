@@ -1,23 +1,26 @@
-import { COLORS } from '@/constants/colors'
-import { getCategoryById } from '@/data/api'
-import { Redirect, useLocalSearchParams } from 'expo-router'
-import { StyleSheet, Text, View } from 'react-native'
+import RecipesList from '@/components/RecipesList'
+import { getCategoryById, getRecipesByCategory } from '@/data/api'
+import { Redirect, useLocalSearchParams, useNavigation } from 'expo-router'
+import { useEffect } from 'react'
 
 export default function DetailsScreen() {
     const { id } = useLocalSearchParams<{ id: string }>()
 
-    const category = getCategoryById(parseInt(id))
+    const parsedId = parseInt(id)
 
-    if (!category) return <Redirect href={'/categories/not-found'} />
+    const category = getCategoryById(parsedId)
 
-    return <View style={styles.container}>
-        <Text>Category {category.name}</Text>
-    </View>
+    if (!category) return <Redirect href={'/'} />
+
+    const recipes = getRecipesByCategory(parsedId)
+
+    const navigation = useNavigation()
+
+    useEffect(() => {
+        navigation.setOptions({
+            title: `${category.name} Recipes`
+        })
+    }, [navigation])
+
+    return <RecipesList recipes={recipes} />
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.light
-    }
-})

@@ -15,7 +15,16 @@ export default function IngredientsPerRecipe() {
 
     return (
         <View style={styles.container}>
-            <FlatList data={ingredients} renderItem={Ingredient} keyExtractor={ingredient => ingredient.id.toString()} numColumns={3} ListEmptyComponent={EmptyComponent} />
+            <FlatList
+                columnWrapperStyle={{
+                    justifyContent: 'center'
+                }}
+                data={ingredients}
+                renderItem={Ingredient}
+                keyExtractor={ingredient => ingredient.id.toString()}
+                numColumns={3}
+                ListEmptyComponent={EmptyComponent}
+            />
         </View>
     )
 }
