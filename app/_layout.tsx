@@ -1,10 +1,12 @@
 import '@expo/metro-runtime'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 import { useFonts } from 'expo-font'
-import { Stack } from 'expo-router'
 import * as SplashScreen from 'expo-splash-screen'
 import { useEffect } from 'react'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { Drawer } from 'expo-router/drawer'
 import 'react-native-reanimated'
+import DrawerContent from '@/components/Drawer'
 
 export {
     // Catch any errors thrown by the Layout component.
@@ -31,9 +33,7 @@ export default function RootLayout() {
     }, [error])
 
     useEffect(() => {
-        if (loaded) {
-            SplashScreen.hideAsync()
-        }
+        if (loaded) SplashScreen.hideAsync()
     }, [loaded])
 
     if (!loaded) {
@@ -45,23 +45,12 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
     return (
-        <Stack
-            screenOptions={{
-                headerTitleStyle: {
-                    fontWeight: '600'
-                },
-                headerTitleAlign: 'center'
-            }}
-        >
-            <Stack.Screen name='index' options={{ title: 'Home' }} />
-            <Stack.Screen name='recipe/[id]' options={{ headerShown: false }} />
-            <Stack.Screen name='ingredients/[id]' options={({ route }: { route: any }) => ({ title: route.params.title })} />
-            <Stack.Screen
-                name='ingredients/for-recipe/[recipeId]'
-                options={({ route }: { route: any }) => ({ title: `Ingredients for ${route.params.recipeName}` })}
-            />
-            <Stack.Screen name='categories/index' options={{ title: 'Categories' }} />
-            <Stack.Screen name='categories/[id]' options={({ route }: { route: any }) => ({ title: `${route.params.categoryName}` })} />
-        </Stack>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+            <Drawer drawerContent={DrawerContent}>
+                <Drawer.Screen name='index' options={{ title: 'Home' }} />
+                <Drawer.Screen name='categories/index' options={{ title: 'Categories' }} />
+                <Drawer.Screen name='search/index' options={{ title: 'Search' }} />
+            </Drawer>
+        </GestureHandlerRootView>
     )
 }

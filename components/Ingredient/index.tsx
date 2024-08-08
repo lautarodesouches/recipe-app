@@ -9,7 +9,7 @@ export default function Ingredient({ item }: { item: { id: number; name: string;
                 style={styles.link}
                 onPress={() =>
                     router.navigate({
-                        pathname: '/ingredients/[id]',
+                        pathname: '/(stack)/ingredients/[id]',
                         params: {
                             id: item.id
                         }

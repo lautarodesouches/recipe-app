@@ -6,7 +6,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Item(recipe: Recipe) {
     const handlePress = (id: number) => {
-        router.navigate(`/recipe/${id}`)
+        router.navigate(`/(stack)/recipe/${id}`)
     }
 
     const category = getCategoryById(recipe.categoryId)
@@ -26,8 +26,8 @@ export default function Item(recipe: Recipe) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1/2,
-        margin: 10,
+        flex: 1 / 2,
+        margin: 10
     },
     pressable: {
         flex: 1,
