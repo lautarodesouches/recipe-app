@@ -5,7 +5,17 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 export default function Ingredient({ item }: { item: { id: number; name: string; photo_url: string; amount: string } }) {
     return (
         <View style={styles.container}>
-            <Pressable style={styles.link} onPress={() => router.navigate(`/ingredients/${item.id}`)}>
+            <Pressable
+                style={styles.link}
+                onPress={() =>
+                    router.navigate({
+                        pathname: '/ingredients/[id]',
+                        params: {
+                            id: item.id
+                        }
+                    })
+                }
+            >
                 <Image style={styles.image} src={item.photo_url} />
                 <Text style={styles.title}>{item.name}</Text>
                 <Text style={styles.text}>{item.amount}</Text>
@@ -19,7 +29,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 20,
+        margin: 20
     },
     link: {
         flex: 1,
@@ -35,13 +45,13 @@ const styles = StyleSheet.create({
         borderRadius: 100
     },
     title: {
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: '400',
-        color: COLORS.black,
+        color: COLORS.dark,
         textAlign: 'center'
     },
     text: {
-        fontSize: 16,
+        fontSize: 10,
         fontWeight: '300',
         color: COLORS.dark,
         textAlign: 'center'

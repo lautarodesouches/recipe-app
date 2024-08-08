@@ -9,7 +9,7 @@ export default function DetailsScreen() {
 
     const recipe = getRecipeById(parseInt(id))
 
-    if (!recipe) return <Redirect href={'/recipe/not-found'} />
+    if (!recipe) return <Redirect href={'/'} />
 
     const category = getCategoryById(recipe.categoryId)
 
@@ -22,7 +22,7 @@ export default function DetailsScreen() {
                     <Text style={styles.subtitle}>{category.name}</Text>
                 </Link>
                 <View style={styles.time}>
-                    <FontAwesome6 name='clock' size={16} color='black' />
+                    <FontAwesome6 name='clock' size={16} color={COLORS.dark} />
                     <Text style={styles.timeText}>{recipe.time} minutes</Text>
                 </View>
                 <Link
@@ -31,7 +31,7 @@ export default function DetailsScreen() {
                         pathname: '/ingredients/for-recipe/[recipeId]',
                         params: {
                             recipeId: id,
-                            recipeName: `${recipe.title.slice(0,10)}...`
+                            recipeName: `${recipe.title.slice(0, 10)}...`
                         }
                     }}
                 >
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 26,
         fontWeight: '600',
-        color: COLORS.dark
+        color: COLORS.black
     },
     link: {
         marginTop: 20,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
     time: {
         color: COLORS.dark,
         width: '100%',
-        marginTop: 30,
+        marginTop: 15,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'center',

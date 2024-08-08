@@ -27,17 +27,21 @@ export default function Item(recipe: Recipe) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 10
+        margin: 10,
     },
     pressable: {
         flex: 1,
         justifyContent: 'space-between',
         backgroundColor: COLORS.white,
         borderRadius: 10,
-        shadowColor: '#000',
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.8,
-        shadowRadius: 3
+        shadowColor: COLORS.black,
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5
     },
     image: {
         width: '100%',
@@ -51,7 +55,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '500',
         textAlign: 'center',
-        paddingHorizontal: 5
+        paddingHorizontal: 5,
+        color: COLORS.dark
     },
     subtitle: {
         paddingBottom: 10,
@@ -59,6 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center',
         fontWeight: '300',
-        textTransform: 'capitalize'
+        textTransform: 'capitalize',
+        color: COLORS.dark
     }
 })

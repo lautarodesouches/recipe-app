@@ -54,15 +54,14 @@ function RootLayoutNav() {
             }}
         >
             <Stack.Screen name='index' options={{ title: 'Home' }} />
-            <Stack.Screen name='recipe/[id]' options={{ title: 'Recipe', headerShown: false }} />
-            <Stack.Screen name='recipe/not-found' options={{ title: 'Oops!' }} />
-            <Stack.Screen name='ingredients/[id]' />
+            <Stack.Screen name='recipe/[id]' options={{ headerShown: false }} />
+            <Stack.Screen name='ingredients/[id]' options={({ route }: { route: any }) => ({ title: route.params.title })} />
             <Stack.Screen
                 name='ingredients/for-recipe/[recipeId]'
-                options={({ route }: { route: any }) => ({ title: `Ingredients for ${route.params?.recipeName}` })}
+                options={({ route }: { route: any }) => ({ title: `Ingredients for ${route.params.recipeName}` })}
             />
             <Stack.Screen name='categories/index' options={{ title: 'Categories' }} />
-            <Stack.Screen name='categories/[id]' options={({ route }: { route: any }) => ({ title: `${route.params?.categoryName}` })} />
+            <Stack.Screen name='categories/[id]' options={({ route }: { route: any }) => ({ title: `${route.params.categoryName}` })} />
         </Stack>
     )
 }

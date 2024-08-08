@@ -24,6 +24,8 @@ export function getIngredientesByRecipe(recipeId: number): {
 }[] {
     const recipe = getRecipeById(recipeId)
 
+    if (!recipe) throw Error('Recipe not found')
+
     const ingredients: {
         id: number
         name: string
@@ -71,8 +73,6 @@ export function getRecipeById(recipeId: number) {
 
 export function getRecipesByCategory(categoryId: number) {
     const recipesForCategory: Recipe[] = recipes.filter(recipe => recipe.categoryId === categoryId)
-
-    if (recipesForCategory.length === 0) throw Error('Recipes nto found')
 
     return recipesForCategory
 }
