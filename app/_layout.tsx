@@ -46,10 +46,11 @@ export default function RootLayout() {
 function RootLayoutNav() {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer drawerContent={DrawerContent}>
-                <Drawer.Screen name='index' options={{ title: 'Home' }} />
-                <Drawer.Screen name='categories/index' options={{ title: 'Categories' }} />
-                <Drawer.Screen name='search/index' options={{ title: 'Search' }} />
+            <Drawer initialRouteName='start' drawerContent={DrawerContent}>
+                <Drawer.Screen name='index' redirect />
+                <Drawer.Screen name='start' options={{ title: 'Home' }} />
+                <Drawer.Screen name='categories' options={{ title: 'Categories' }} />
+                <Drawer.Screen name='search' options={{ title: 'Search' }} />
             </Drawer>
         </GestureHandlerRootView>
     )

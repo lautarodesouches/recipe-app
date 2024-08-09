@@ -8,12 +8,7 @@ export default function Ingredient({ item }: { item: { id: number; name: string;
             <Pressable
                 style={styles.link}
                 onPress={() =>
-                    router.navigate({
-                        pathname: '/(stack)/ingredients/[id]',
-                        params: {
-                            id: item.id
-                        }
-                    })
+                    router.navigate(`/start/ingredients/${item.id}`)
                 }
             >
                 <Image style={styles.image} src={item.photo_url} />

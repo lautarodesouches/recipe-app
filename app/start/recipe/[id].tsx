@@ -10,7 +10,7 @@ export default function DetailsScreen() {
 
     const recipe = getRecipeById(parseInt(id))
 
-    if (!recipe) return <Redirect href={'/'} />
+    if (!recipe) return <Redirect href={'/start'} />
 
     const category = getCategoryById(recipe.categoryId)
 
@@ -21,7 +21,7 @@ export default function DetailsScreen() {
                 <Text style={styles.title}>{recipe.title}</Text>
                 <Link
                     style={styles.link}
-                    href={{ pathname: `/(stack)/category/[id]`, params: { id: category.id, categoryName: category.name } }}
+                    href={{ pathname: `/categories/[id]`, params: { id: category.id, categoryName: category.name } }}
                 >
                     <Text style={styles.subtitle}>{category.name}</Text>
                 </Link>
@@ -32,7 +32,7 @@ export default function DetailsScreen() {
                 <Link
                     style={styles.ingredients}
                     href={{
-                        pathname: '/(stack)/ingredients/for-recipe/[recipeId]',
+                        pathname: '/start/ingredients/for-recipe/[recipeId]',
                         params: {
                             recipeId: id,
                             recipeName: sliceTitle(recipe.title)

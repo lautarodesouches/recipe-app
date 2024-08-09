@@ -1,34 +1,36 @@
 import BackButton from '@/components/BackButton'
-import { Stack } from 'expo-router'
+import { Stack, useNavigationContainerRef } from 'expo-router'
 import { Drawer } from 'expo-router/drawer'
 
-export default function StackLayout() {
+export default function Layout() {
+    const navigation = useNavigationContainerRef()
+
+    const routeName = navigation.getCurrentRoute()?.name
+
+    const isIndex = routeName === undefined || routeName === 'index'
+
     return (
         <>
-            <Drawer.Screen options={{ headerShown: false }} />
+            <Drawer.Screen options={{ headerShown: isIndex }} />
             <Stack
                 screenOptions={{
                     headerTitleStyle: {
                         fontWeight: '600'
                     },
                     headerTitleAlign: 'center',
-                    headerBackButtonMenuEnabled: true
+                    headerBackButtonMenuEnabled: true,
+                    headerLeft: BackButton
                 }}
             >
-                <Stack.Screen name='category/[id]' />
+                <Stack.Screen name='index' options={{ headerShown: false }} />
                 <Stack.Screen
                     name='ingredients/[id]'
-                    options={{
-                        headerLeft: BackButton,
-                        headerTransparent: true,
-                        title: ''
-                    }}
                 />
                 <Stack.Screen
                     name='ingredients/for-recipe/[recipeId]'
                     options={({ route }: { route: any }) => ({ title: `Ingredients for ${route.params.recipeName}` })}
                 />
-                <Stack.Screen name='recipe/[id]' options={{ headerLeft: BackButton, title: '', headerTransparent: true }} />
+                <Stack.Screen name='recipe/[id]' options={{ title: '', headerTransparent: true }} />
             </Stack>
         </>
     )

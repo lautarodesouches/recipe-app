@@ -10,7 +10,7 @@ export default function DetailsScreen() {
 
     const category = getCategoryById(parsedId)
 
-    if (!category) return <Redirect href={'/'} />
+    if (!category) return <Redirect href={'/start'} />
 
     const recipes = getRecipesByCategory(parsedId)
 

@@ -24,7 +24,7 @@ export default function IngredientById() {
 
     const recipes = getRecipesByIngredient(parsedId)
 
-    if (!ingredient) return <Redirect href={'/'} />
+    if (!ingredient) return <Redirect href={'/start'} />
 
     const navigation = useNavigation()
 

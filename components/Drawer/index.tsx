@@ -18,9 +18,9 @@ export default function DrawerContent(props: DrawerContentComponentProps) {
 
     return (
         <View style={styles.container}>
-            <MenuButton icon='home-outline' text='Home' handlePress={() => navigate('index')} />
-            <MenuButton icon='file-tray-outline' text='Categories' handlePress={() => navigate('categories/index')} />
-            <MenuButton icon='search-outline' text='Search' handlePress={() => navigate('search/index')} />
+            <MenuButton icon='home-outline' text='Home' handlePress={() => navigate('start')} />
+            <MenuButton icon='file-tray-outline' text='Categories' handlePress={() => navigate('categories')} />
+            <MenuButton icon='search-outline' text='Search' handlePress={() => navigate('search')} />
         </View>
     )
 }

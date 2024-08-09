@@ -5,11 +5,11 @@ import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
 export default function Item(recipe: Recipe) {
-    const handlePress = (id: number) => {
-        router.navigate(`/(stack)/recipe/${id}`)
-    }
-
     const category = getCategoryById(recipe.categoryId)
+
+    const handlePress = (id: number) => {
+        router.navigate(`/start/recipe/${id}`)
+    }
 
     return (
         <View style={styles.container}>
