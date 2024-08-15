@@ -3,9 +3,10 @@ import { getCategoryById } from '@/data/api'
 import { Recipe } from '@/types'
 import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
+import Animated, { FadeIn } from 'react-native-reanimated'
 
-export default function Item(recipe: Recipe) {
-    const category = getCategoryById(recipe.categoryId)
+export default function Item({ index, item }: { index: number; item: Recipe }) {
+    const category = getCategoryById(item.categoryId)
 
     const handlePress = (id: number) => {
         router.navigate(`/start/recipe/${id}`)
@@ -13,13 +14,15 @@ export default function Item(recipe: Recipe) {
 
     return (
         <View style={styles.container}>
-            <Pressable style={styles.pressable} onPress={() => handlePress(recipe.recipeId)}>
-                <View>
-                    <Image style={styles.image} src={recipe.photo_url} />
-                    <Text style={styles.title}>{recipe.title}</Text>
-                </View>
-                <Text style={styles.subtitle}>{category.name}</Text>
-            </Pressable>
+            <Animated.View style={styles.view} entering={FadeIn.delay(index * 100).duration(3000)}>
+                <Pressable style={styles.pressable} onPress={() => handlePress(item.recipeId)}>
+                    <View>
+                        <Image style={styles.image} src={item.photo_url} />
+                        <Text style={styles.title}>{item.title}</Text>
+                    </View>
+                    <Text style={styles.subtitle}>{category.name}</Text>
+                </Pressable>
+            </Animated.View>
         </View>
     )
 }
@@ -29,11 +32,8 @@ const styles = StyleSheet.create({
         flex: 1 / 2,
         margin: 10
     },
-    pressable: {
+    view: {
         flex: 1,
-        justifyContent: 'space-between',
-        backgroundColor: COLORS.white,
-        borderRadius: 10,
         shadowColor: COLORS.black,
         shadowOffset: {
             width: 0,
@@ -41,7 +41,13 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
-        elevation: 5
+        elevation: 5,
+        backgroundColor: COLORS.white,
+        borderRadius: 10
+    },
+    pressable: {
+        flex: 1,
+        justifyContent: 'space-between'
     },
     image: {
         width: '100%',

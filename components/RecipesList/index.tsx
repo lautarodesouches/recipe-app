@@ -15,7 +15,7 @@ export default function RecipesList({ recipes, header }: { recipes: RecipeType[]
                 data={recipes}
                 numColumns={2}
                 keyExtractor={item => item.recipeId.toString()}
-                renderItem={({ item }) => <Recipe {...item} />}
+                renderItem={Recipe}
                 ListHeaderComponent={header}
                 ListEmptyComponent={EmptyComponent}
             />
