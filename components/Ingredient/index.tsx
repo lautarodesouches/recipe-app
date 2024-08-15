@@ -2,18 +2,20 @@ import { COLORS } from '@/constants/colors'
 import { router } from 'expo-router'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 
-export default function Ingredient({ item }: { item: { id: number; name: string; photo_url: string; amount: string } }) {
+export default function Ingredient({ item }: { item: { ingredientId: number; name: string; photo_url: string; amount?: string } }) {
     return (
         <View style={styles.container}>
             <Pressable
                 style={styles.link}
                 onPress={() =>
-                    router.navigate(`/start/ingredients/${item.id}`)
+                    router.navigate(`start/ingredients/${item.ingredientId}`)
                 }
             >
                 <Image style={styles.image} src={item.photo_url} />
                 <Text style={styles.title}>{item.name}</Text>
-                <Text style={styles.text}>{item.amount}</Text>
+                {
+                    item.amount && <Text style={styles.text}>{item.amount}</Text>
+                }
             </Pressable>
         </View>
     )

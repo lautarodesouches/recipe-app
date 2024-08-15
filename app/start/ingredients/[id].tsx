@@ -32,7 +32,7 @@ export default function IngredientById() {
         navigation.setOptions({
             title: ingredient.name
         })
-    }, [navigation])
+    }, [navigation, ingredient.name])
 
     return (
         <View style={styles.container}>

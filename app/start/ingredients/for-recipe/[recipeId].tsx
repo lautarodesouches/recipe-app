@@ -21,7 +21,7 @@ export default function IngredientsPerRecipe() {
                 }}
                 data={ingredients}
                 renderItem={Ingredient}
-                keyExtractor={ingredient => ingredient.id.toString()}
+                keyExtractor={ingredient => ingredient.ingredientId.toString()}
                 numColumns={3}
                 ListEmptyComponent={EmptyComponent}
             />

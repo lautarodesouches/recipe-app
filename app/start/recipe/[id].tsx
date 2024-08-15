@@ -32,7 +32,7 @@ export default function DetailsScreen() {
                 <Link
                     style={styles.ingredients}
                     href={{
-                        pathname: '/start/ingredients/for-recipe/[recipeId]',
+                        pathname: 'start/ingredients/for-recipe/[recipeId]',
                         params: {
                             recipeId: id,
                             recipeName: sliceTitle(recipe.title)

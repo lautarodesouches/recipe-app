@@ -46,11 +46,10 @@ export default function RootLayout() {
 function RootLayoutNav() {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            <Drawer initialRouteName='start' drawerContent={DrawerContent}>
+            <Drawer initialRouteName='start' drawerContent={DrawerContent} screenOptions={{headerTitleAlign: 'center'}}>
                 <Drawer.Screen name='index' redirect />
                 <Drawer.Screen name='start' options={{ title: 'Home' }} />
                 <Drawer.Screen name='categories' options={{ title: 'Categories' }} />
-                <Drawer.Screen name='search' options={{ title: 'Search' }} />
             </Drawer>
         </GestureHandlerRootView>
     )

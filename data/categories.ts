@@ -25,7 +25,7 @@ const category: Category[] = [
     {
         id: 0,
         name: 'Pizza',
-        photo_url: 'https://amp.businessinsider.com/images/5c084bf7bde70f4ea53f0436-750-563.jpg'
+        photo_url: 'https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
     }
 ]
 

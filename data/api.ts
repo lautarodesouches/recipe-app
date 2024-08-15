@@ -17,7 +17,7 @@ export function getIngredientById(ingredientId: number) {
 }
 
 export function getIngredientesByRecipe(recipeId: number): {
-    id: number
+    ingredientId: number
     name: string
     photo_url: string
     amount: string
@@ -26,16 +26,11 @@ export function getIngredientesByRecipe(recipeId: number): {
 
     if (!recipe) throw Error('Recipe not found')
 
-    const ingredients: {
-        id: number
-        name: string
-        photo_url: string
-        amount: string
-    }[] = recipe.ingredients.map(ingredient => {
+    const ingredients = recipe.ingredients.map(ingredient => {
         const detail = getIngredientById(ingredient[0])
 
         return {
-            id: ingredient[0],
+            ingredientId: ingredient[0],
             name: detail.name,
             photo_url: detail.photo_url,
             amount: ingredient[1]
@@ -84,15 +79,12 @@ export function getRecipesByIngredient(ingredientId: number) {
 }
 
 export function getNumberOfRecipesByCategory(categoryId: number) {
-    let count = 0
-    recipes.map(recipe => {
-        if (recipe.categoryId == categoryId) count++
-    })
-    return count
+    return getRecipesByCategory(categoryId).length
 }
 
 // SEARCH
 export function getRecipeByNameCategoryOrIngredient(query: string) {
+
     const lowerQuery = query.toLowerCase()
 
     // BY NAME

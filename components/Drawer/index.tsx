@@ -20,7 +20,6 @@ export default function DrawerContent(props: DrawerContentComponentProps) {
         <View style={styles.container}>
             <MenuButton icon='home-outline' text='Home' handlePress={() => navigate('start')} />
             <MenuButton icon='file-tray-outline' text='Categories' handlePress={() => navigate('categories')} />
-            <MenuButton icon='search-outline' text='Search' handlePress={() => navigate('search')} />
         </View>
     )
 }
